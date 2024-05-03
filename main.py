@@ -1,6 +1,11 @@
-print("Hello World")
-print("how was your day")
-print("I am fine")
-print("thats good")
+from Components import ReadFile
+import sys
 
-print(2 + 3)
+
+def main(fn: str):
+    tell, query = ReadFile().readAll(fn)
+    print(tell, query)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])
