@@ -2,9 +2,10 @@ from Components import ReadFile
 import sys
 
 
-def main(fn: str):
-    tell, query = ReadFile().readAll(fn)
-    print(tell, query)
+def main(fileName: str):
+    tell, query = ReadFile().readAll(fileName)
+    print("Tell: ", tell)
+    print("Query: ", query)
 
 
 if __name__ == "__main__":

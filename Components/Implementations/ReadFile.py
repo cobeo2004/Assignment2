@@ -30,3 +30,6 @@ class ReadFile(IReader):
             query = ""
 
         return tell, query
+
+    def parseSymbolsSentences(self, teller: str) -> None:
+        pass
