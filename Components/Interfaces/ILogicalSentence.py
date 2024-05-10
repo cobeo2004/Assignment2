@@ -7,3 +7,6 @@ class ILogicalSentence:
 
     def symbol(self):
         return set()
+
+    def __repr__(self) -> str:
+        pass
