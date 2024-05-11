@@ -17,7 +17,7 @@ class KnowledgeBase(IKnowledgeBase):
         for value in sentences:
             self.queryTell(value)
 
-    def queryTell(self, sentence):
+    def queryAsk(self, sentence):
         if self.type == KBType.GS:
             newSentence = LogicalSentence(sentence)
             print("GS Symbols: ", newSentence.symbols)

@@ -5,5 +5,5 @@ class IKnowledgeBase:
     def __init__(self, sentences, type: KBType) -> None:
         pass
 
-    def queryTell(self, sentence):
+    def queryAsk(self, sentence):
         pass
