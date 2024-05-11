@@ -1,7 +1,7 @@
-from Components.Interfaces.IPropositionalLogic import IPropositionalLogic
+from Components.Interfaces.IPropositionalLogic import IPropositionalEvaluation
 
 
-class IHornForm(IPropositionalLogic):
+class IHornForm(IPropositionalEvaluation):
     def __init__(self, sentence) -> None:
         pass
 

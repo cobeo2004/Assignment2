@@ -20,6 +20,8 @@ def main(type: str, fileName: str):
         kb = KnowledgeBase(tell, KBType.GS)
     elif type == "FC":
         kb = KnowledgeBase(tell, KBType.HF)
+        solution = ForwardChaining(kb)
+        print(solution.entails(query))
 
 
 if __name__ == "__main__":
