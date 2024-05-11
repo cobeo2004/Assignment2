@@ -1,6 +1,8 @@
 from Components.Interfaces.IReadFile import IReader
+from Components.Decorator.Export import export
 
 
+@export
 class ReadFile(IReader):
     def readAll(self, fn: str) -> None:
         lines = []

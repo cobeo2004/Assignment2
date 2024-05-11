@@ -32,11 +32,12 @@ if __name__ == "__main__":
     # set up knowledge base and method based on chosen method
     # print solution using method and query (ask)
     if method == 'TT':
-        kb = KnowledgeBase(tell, 'GS') # setup knowledge base with general sentences
+        # setup knowledge base with general sentences
+        kb = KnowledgeBase(tell, 'GS')
         tt = TruthTable(kb)
         print(tt.solve(ask))
     elif method == 'FC':
-        kb = KnowledgeBase(tell, 'HF') # setup knowledge base with horn form
+        kb = KnowledgeBase(tell, 'HF')  # setup knowledge base with horn form
         fc = ForwardChaining(kb)
         print(fc.solve(ask))
     elif method == 'BC':
@@ -45,4 +46,3 @@ if __name__ == "__main__":
         print(bc.solve(ask))
     else:
         print("Unknown method entered.")
-    
