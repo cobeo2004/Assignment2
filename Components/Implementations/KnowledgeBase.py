@@ -1,7 +1,7 @@
 from Components.Interfaces.IKnowledgeBase import IKnowledgeBase
 from Components.Decorator.Export import export
 from Components.Enums.KBTypes import KBType
-from Components.Implementations.LogicalSentence import Sentence
+from Components.Implementations.LogicalSentence import LogicalSentence
 from Components.Implementations.HornForm import HornForm
 
 
@@ -19,9 +19,9 @@ class KnowledgeBase(IKnowledgeBase):
 
     def queryTell(self, sentence):
         if self.type == KBType.GS:
-            newSentence = Sentence(sentence)
+            newSentence = LogicalSentence(sentence)
             print("GS Symbols: ", newSentence.symbols)
-            print("GS Atomic: ", newSentence.atomic)
+            print("GS Atomic: ", newSentence.atom)
             print("GS Root: ", newSentence.root)
             print("GS Original: ", newSentence.original)
             print("##########################")
@@ -29,7 +29,6 @@ class KnowledgeBase(IKnowledgeBase):
             newSentence = HornForm(sentence)
             print("HF Clause: ", newSentence.clause)
             print("HF Symbols: ", newSentence.symbols)
-            print("HF Sentence: ", newSentence.sentence)
             print("##########################")
 
         self.sentences.append(newSentence)
