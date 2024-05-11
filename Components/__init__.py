@@ -7,5 +7,4 @@ from Components.Interfaces.IKnowledgeBase import IKnowledgeBase
 from Components.Interfaces.ILogicalSentence import ILogicalSentence
 from Components.Interfaces.IReadFile import IReader
 from Components.Interfaces.ITruthTable import ITruthTable
-
-__all__ = all_array
+from Components.Enums.KBTypes import KBType

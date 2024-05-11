@@ -4,6 +4,7 @@ from HornForm import HornForm
 
 class KnowledgeBase:
     """Used to store propositional statements and symbols."""
+
     def __init__(self, sentences, type):
         ## fields ##
         self.sentences = []        # sentences contained in knowledge base
@@ -12,20 +13,25 @@ class KnowledgeBase:
             self.type = type
         else:
             raise Exception("Unknown sentence type.")
-        for sentence in sentences: # add sentences
+        for sentence in sentences:  # add sentences
             self.tell(sentence)
 
     # tell knowledge base a sentence
     def tell(self, sentence):
-        # create sentence of chosen type 
+        # create sentence of chosen type
         if self.type == 'HF':
             new = HornForm(sentence)
+            print(new.clause)
         elif self.type == 'GS':
-            new = Sentence(sentence)    # general sentences            
+            new = Sentence(sentence)    # general sentences
+            print("Root: ", new.root)
+            print("Symbols: ", new.symbols)
+            print("Atomic: ", new.atomic)
+            print("Orig: ", new.original)
+            print("##############")
         # add sentence to knowledge base
         self.sentences.append(new)
         # add new symbols to knowledge base if found
         for symbol in new.symbols:
             if symbol not in self.symbols:
                 self.symbols.append(symbol)
-
