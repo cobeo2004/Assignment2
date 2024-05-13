@@ -19,4 +19,5 @@ from Components.Interfaces.IForwardChaining import IForwardChaining
 from Components.Interfaces.IBackwardChaining import IBackwardChaining
 from Components.Enums.KBTypes import KBType
 
+
 __all__, __export__ = all_array, export
