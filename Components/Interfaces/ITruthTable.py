@@ -1,13 +1,19 @@
+
 from Components.Interfaces.ILogicalSentence import ILogicalSentence
-from Components.Interfaces.IPropositionalLogic import IPropositionalMethod
+from Components.Interfaces.IPropositionalLogic import IPropositionalLogic
 
 
-class ITruthTable(IPropositionalMethod):
-    def __init__(self, knowledgeBase):
+class ITruthTable(IPropositionalLogic):
+    def __init__(self, knowledgeBase, ):
         self.knowledgeBase = knowledgeBase
+
+    def _entails(self, alphabetic):
+        pass 
 
     def _inspect_entail(self, alphabetic, symbols, model):
         pass
 
-    def entails(self, query):
+    def evaluate(self, ask):
         pass
+
+    
