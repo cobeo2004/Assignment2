@@ -15,4 +15,4 @@ class TruthTable(ITruthTable):
         for symbol in alphabetic.symbols:
             if symbol not in symbols:
                 symbols.append(symbol)
-        return self._entails(alphabetic, symbols, {})
+        return self.entails(alphabetic, symbols, {})
