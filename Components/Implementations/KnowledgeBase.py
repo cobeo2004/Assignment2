@@ -15,7 +15,7 @@ class KnowledgeBase(IKnowledgeBase):
         else:
             raise ValueError("Unknown knowledge base type.")
         for value in sentences:
-            self.queryTell(value)
+            self.queryAsk(value)
 
     def queryAsk(self, sentence):
         if self.type == KBType.GS:
