@@ -5,16 +5,16 @@ import sys
 def main(type: str, fileName: str):
     try:
         tell, query = ReadFile().readAll(fn=fileName)
+        print("Tell: ", tell)
+        print("Query: ", query)
     except:
         raise FileNotFoundError("File not found.")
 
     if len(tell) == 0:
-        print("No tell found.")
-        sys.exit(0)
+        raise ValueError("No tell found.")
 
     if len(query) == 0:
-        print("No ask found.")
-        sys.exit(0)
+        raise ValueError("No query found.")
 
     if type == "TT":
         kb = KnowledgeBase(tell, KBType.GS)

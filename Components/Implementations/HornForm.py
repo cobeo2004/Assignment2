@@ -6,43 +6,43 @@ import re
 @export
 class HornForm(IHornForm):
     def __init__(self, sentence) -> None:
-        self.clause = []
-        self.symbols = []
+        self.clauses = []
+        self.symbols = set()  # Use a set to avoid duplicates
         self.sentence = sentence
         self.head = ""
         self.conjuncts = []
         self.evaluate()
 
     def evaluate(self):
-        self.clause = re.split("(=>|&|\(|\)|~|\|\||<=>)", self.sentence)
-        while "" in self.clause:
-            self.clause.remove("")
-        while "(" in self.clause:
-            self.clause.remove("(")
-        while ")" in self.clause:
-            self.clause.remove(")")
-        if ('~' or '||' or '<=>') in self.clause:
-            raise ValueError("Sentence is not in horn form", self.clause)
+        self.clauses = re.split("(=>|&|\(|\)|~|\|\||<=>)", self.sentence)
+        self.clauses = [c.strip()
+                        for c in self.clauses if c.strip() and c not in "()"]
 
-        if len(self.clause) == 1:
-            self.head = self.clause[0]
+        if any(op in self.clauses for op in ['~', '||', '<=>']):
+            raise ValueError("Sentence is not in horn form", self.clauses)
+
+        if len(self.clauses) == 1:
+            self.head = self.clauses[0]
+            self.symbols.add(self.head)
         else:
-            index = self.clause.index('=>')
-            rhs = self.clause[index + 1:]
+            index = self.clauses.index('=>')
+            rhs = self.clauses[index + 1:]
             if len(rhs) > 1:
-                raise ValueError("Error horn form format", self.clause)
+                raise ValueError("Error horn form format", self.clauses)
             self.head = rhs[0]
-            lhs = self.clause[:index]
-            if (lhs[0] or lhs[-1]) == '&':
-                raise ValueError("Error horn form format", self.clause)
+            self.symbols.add(self.head)
+
+            lhs = self.clauses[:index]
+            if lhs[0] == '&' or lhs[-1] == '&':
+                raise ValueError("Error horn form format", self.clauses)
 
             for i in range(len(lhs) - 1):
-                if lhs[i] == lhs[i + 1]:
-                    raise ValueError("Error horn form format", self.clause)
+                if lhs[i] == '&' and lhs[i + 1] == '&':
+                    raise ValueError("Error horn form format", self.clauses)
             for value in lhs:
                 if value != '&':
-                    self.conjuncts.extend(value)
-            self.symbols = self.conjuncts.copy()
+                    self.conjuncts.append(value)
+                    self.symbols.add(value)
 
-        if self.head not in self.symbols:
-            self.symbols.append(self.head)
+        # Convert back to list for the final output
+        self.symbols = list(self.symbols)

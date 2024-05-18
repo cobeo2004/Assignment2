@@ -21,16 +21,8 @@ class KnowledgeBase:
         # create sentence of chosen type
         if self.type == 'HF':
             new = HornForm(sentence)
-            print("HF Clause: ", new.clause)
-            print("HF Symbols: ", new.symbols)
-            print("##########################")
         elif self.type == 'GS':
             new = Sentence(sentence)    # general sentences
-            print("Root: ", new.root)
-            print("Symbols: ", new.symbols)
-            print("Atomic: ", new.atomic)
-            print("Orig: ", new.original)
-            print("##############")
         # add sentence to knowledge base
         self.sentences.append(new)
         # add new symbols to knowledge base if found
