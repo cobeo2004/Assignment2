@@ -7,10 +7,6 @@ from Components.Interfaces.IHornForm import IHornForm
 class ForwardChaining(IForwardChaining):
     def __init__(self, knowledgeBase: IHornForm) -> None:
         super().__init__(knowledgeBase)
-        self.count = {}
-        self.inferred = {}
-        self.agenda = []
-        self.chain = []
 
     def __forward_chaining(self, query):
         # Clear the chain at the beginning

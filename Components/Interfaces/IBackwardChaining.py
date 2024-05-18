@@ -5,8 +5,8 @@ from Components.Interfaces.IHornForm import IHornForm
 class IBackwardChaining(IPropositionalMethod):
     def __init__(self, knowledgeBase: IHornForm) -> None:
         self.knowledgeBase = knowledgeBase
-        self.chain = []
-        self.removed = []
+        self.inferred = set()  # To keep track of already inferred symbols
+        self.chain = []  # To keep the chain of inferences
 
     def __backward_chaining(self, query):
         pass
