@@ -13,40 +13,41 @@ class ForwardChaining(IForwardChaining):
         self.chain = []
 
     def __forward_chaining(self, query):
+        # Clear the chain at the beginning
+        self.chain.clear()
+
         for sentence in self.knowledgeBase.sentences:
             if len(sentence.conjuncts) == 0:
                 if sentence.head == query:
-                    return True, [query]
+                    self.chain.append(query)
+                    return True
                 self.agenda.append(sentence.head)
             else:
                 self.count.update({sentence: len(sentence.conjuncts)})
+
         for symbol in self.knowledgeBase.symbols:
             self.inferred.update({symbol: False})
 
         while len(self.agenda) != 0:
             p = self.agenda.pop(0)
-            self.chain.append(p)
             if not self.inferred[p]:
+                self.chain.append(p)
                 self.inferred[p] = True
                 for sentence in self.count:
                     if p in sentence.conjuncts:
                         self.count[sentence] -= 1
                         if self.count[sentence] == 0:
                             if sentence.head == query:
-                                self.agenda.append(sentence.head)
-                                return True, self.chain
+                                self.chain.append(sentence.head)
+                                return True
                             self.agenda.append(sentence.head)
-        return False, []
+
+        return False
 
     def entails(self, query):
-        isFound, chain = self.__forward_chaining(query)
+        isFound = self.__forward_chaining(query)
         if isFound:
-            result = "YES: "
-            for value in chain:
-                if value is not chain[-1]:
-                    result += value + ", "
-                else:
-                    result += value
+            result = "YES: " + ", ".join(self.chain)
         else:
             result = "NO"
         return result

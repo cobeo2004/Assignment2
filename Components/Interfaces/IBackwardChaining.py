@@ -13,6 +13,3 @@ class IBackwardChaining(IPropositionalMethod):
 
     def entails(self, query):
         pass
-
-    def evaluate(self, query):
-        pass

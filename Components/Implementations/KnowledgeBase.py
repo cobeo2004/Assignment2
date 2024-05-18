@@ -37,6 +37,7 @@ class KnowledgeBase(IKnowledgeBase):
             newSentence = HornForm(sentence)
             # print("HF Clause: ", newSentence.clauses)
             # print("HF Symbols: ", newSentence.symbols)
+            # print("HF Conjunction: ", newSentence.conjuncts)
             # print("##########################")
 
         self.sentences.append(newSentence)

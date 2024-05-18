@@ -22,6 +22,12 @@ def main(type: str, fileName: str):
         kb = KnowledgeBase(tell, KBType.HF)
         solution = ForwardChaining(kb)
         print(solution.entails(query))
+    elif type == "BC":
+        kb = KnowledgeBase(tell, KBType.HF)
+        solution = BackwardChaining(kb)
+        print(solution.entails(query))
+    else:
+        raise ValueError("Invalid type.")
 
 
 if __name__ == "__main__":
