@@ -35,8 +35,8 @@ if __name__ == "__main__":
         # setup knowledge base with general sentences
         kb = KnowledgeBase(tell, 'GS')
         print(kb.type)
-        # tt = TruthTable(kb)
-        # print(tt.solve(ask))
+        tt = TruthTable(kb)
+        print(tt.solve(ask))
     elif method == 'FC':
         kb = KnowledgeBase(tell, 'HF')  # setup knowledge base with horn form
         fc = ForwardChaining(kb)

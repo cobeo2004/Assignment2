@@ -15,6 +15,12 @@ class KnowledgeBase:
             raise Exception("Unknown sentence type.")
         for sentence in sentences:  # add sentences
             self.tell(sentence)
+        print("Atomic: ", [
+            sentence.atomic for sentence in self.sentences])
+        print("Root: ", [sentence.root for sentence in self.sentences])
+        print("Original: ", [
+            sentence.original for sentence in self.sentences])
+        print("Symbols: ", self.symbols)
 
     # tell knowledge base a sentence
     def tell(self, sentence):

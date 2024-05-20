@@ -6,12 +6,13 @@ from Components.Interfaces.IPropositionalLogic import IPropositionalMethod
 class ITruthTable(IPropositionalMethod):
     def __init__(self, knowledgeBase):
         self.knowledgeBase = knowledgeBase
+        self.count = 0
 
-    def _entails(self, alphabetic):
+    def __truth_table(self, alphabetic):
         pass
 
-    def _inspect_entail(self, alphabetic, symbols, model):
+    def __check(self, alphabetic, symbols, model):
         pass
 
-    def evaluate(self, ask):
+    def entails(self, query):
         pass
