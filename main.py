@@ -33,4 +33,4 @@ def main(type: str, fileName: str):
 
 if __name__ == "__main__":
     # main(sys.argv[1], sys.argv[2])
-    main("TT", "./Components/Datasets/test_genericKB_1.txt")
+    main("BC", "./Components/Datasets/test_hornKB.txt")
