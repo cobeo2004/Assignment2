@@ -1,3 +1,8 @@
+# Filename: __init__.py
+# Author: Simon Nguyen and Jordan Ardley
+# Date: 2024-05-20
+# Description: This file will handle imports all Components from the Components folder and export it for outside usages.
+
 # Implementations
 from Components.Decorator.Export import export, all_array
 from Components.Implementations.KnowledgeBase import KnowledgeBase
@@ -21,5 +26,5 @@ from Components.Interfaces.IBackwardChaining import IBackwardChaining
 # Enums
 from Components.Enums.KBTypes import KBType
 
-
+# Export all components
 __all__, __export__ = all_array, export

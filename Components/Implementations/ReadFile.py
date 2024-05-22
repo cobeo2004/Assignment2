@@ -4,7 +4,7 @@ from Components.Decorator.Export import export
 
 @export
 class ReadFile(IReader):
-    def readAll(self, fn: str) -> None:
+    def readAll(self, fn: str):
         lines = []
         flattened = []
 
@@ -32,11 +32,3 @@ class ReadFile(IReader):
             query = ""
 
         return tell, query
-
-    def parseSymbolsSentences(self, teller: str) -> None:
-        symbols = set()
-        sentences = []
-        for sentence in teller:
-            symbols.update(r'\b[a-zA-Z] [a-zA-Z0-9]*\b', sentence)
-            sentences.append(sentence)
-        return symbols, sentences
