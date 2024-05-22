@@ -1,3 +1,10 @@
+# Filename: CreateTestCases.py
+# Author: Xuan Tuan Minh Nguyen
+# Original Author: Thong Nguyen and Hung
+# Approval from Original Author: YES!
+# Date: 2024-05-21
+# Description: Create Horn Form and Generic Propositional Form test cases
+
 from os import listdir
 import random
 import string

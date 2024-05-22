@@ -1,7 +1,6 @@
 from Components.Decorator.Export import export
 from Components.Implementations.LogicalSentence import LogicalSentence
 from Components.Interfaces.ITruthTable import ITruthTable
-from Components.Debug.log import logResultToFile
 
 
 @export
