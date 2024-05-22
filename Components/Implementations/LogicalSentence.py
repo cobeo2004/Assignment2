@@ -6,11 +6,7 @@ import re
 @export
 class LogicalSentence(ILogicalSentence):
     def __init__(self, sentence) -> None:
-        self.symbols = []
-        self.root = []
-        self.atom = {}
-        self.original = []
-
+        super().__init__(sentence)
         self.formatOriginal(sentence)
 
     def formatOriginal(self, sentence):
@@ -19,6 +15,7 @@ class LogicalSentence(ILogicalSentence):
             orig.remove("")
         self.original = [token.strip() for token in orig if token.strip()]
         symbols = re.split("=>|&|\(|\)|~|\|\||<=>", sentence)
+        print(orig)
         while "" in symbols:
             symbols.remove("")
         self.symbols = list(set(symbols))

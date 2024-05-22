@@ -6,11 +6,7 @@ import re
 @export
 class HornForm(IHornForm):
     def __init__(self, sentence) -> None:
-        self.clauses = []
-        self.symbols = set()  # Use a set to avoid duplicates
-        self.sentence = sentence
-        self.head = ""
-        self.conjuncts = []
+        super().__init__(sentence)
         self.evaluate()
 
     def evaluate(self):
