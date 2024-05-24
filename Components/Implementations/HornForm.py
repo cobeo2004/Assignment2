@@ -6,6 +6,14 @@ import re
 @export
 class HornForm(IHornForm):
     def __init__(self, sentence) -> None:
+        ######
+        # IHornForm initializer
+        # self.clauses = []  # To keep the clauses of the sentence
+        # self.symbols = set()  # Use a set to avoid duplicates
+        # self.sentence = sentence  # The sentence that we want to convert into Horn Form
+        # self.head = ""  # The head of the sentence
+        # self.conjuncts = []  # The conjuncts of the sentence
+        ######
         super().__init__(sentence)
         # Evaluate the given sentence to convert it into Horn form
         self.evaluate()

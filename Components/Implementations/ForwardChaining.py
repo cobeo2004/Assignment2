@@ -5,6 +5,13 @@ from Components.Decorator.Export import export
 @export
 class ForwardChaining(IForwardChaining):
     def __init__(self, knowledgeBase) -> None:
+        ###########
+        # IForwardChaining initializer
+        # self.count = {}  # To keep track of count of symbols in the knowledge base
+        # self.inferred = {}  # To keep track of already inferred symbols
+        # self.agenda = []  # To keep the agenda of symbols to be inferred
+        # self.chain = []  # To keep the chain of inferences
+        ###########
         super().__init__(knowledgeBase)
 
     def __forward_chaining(self, query):

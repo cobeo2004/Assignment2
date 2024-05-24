@@ -6,6 +6,11 @@ from Components.Interfaces.ITruthTable import ITruthTable
 @export
 class TruthTable(ITruthTable):
     def __init__(self, knowledgeBase):
+        ###########
+        # ITruthTable initializer
+        # self.knowledgeBase = knowledgeBase
+        # self.count = 0
+        ###########
         super().__init__(knowledgeBase)
 
     def __check(self, alphabetic, symbols, model):

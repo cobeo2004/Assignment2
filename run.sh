@@ -16,7 +16,7 @@ case $command in
     python Tests/main.py "$@"
     ;;
   main)
-    python main.py "$@"
+    python iengine.py "$@"
     ;;
     reference)
     python References/InferenceEngine-master/InferenceEngine.py "$@"

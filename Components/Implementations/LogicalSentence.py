@@ -6,6 +6,13 @@ import re
 @export
 class LogicalSentence(ILogicalSentence):
     def __init__(self, sentence) -> None:
+        #######
+        # ILogicalSentence initializer
+        # self.symbols = []  # To store the list of unique symbols of the sentence
+        # self.root = []  # To store the root of the processed sentence
+        # self.atom = {}  # To store the atomic propositions created during the formatting process
+        # self.original = []  # To store the original sentence split into constituent tokens
+        #######
         super().__init__(sentence)
         # Format the original sentence upon initialization
         self.formatOriginal(sentence)

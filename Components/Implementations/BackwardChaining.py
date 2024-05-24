@@ -5,6 +5,12 @@ from Components.Interfaces.IBackwardChaining import IBackwardChaining
 @export
 class BackwardChaining(IBackwardChaining):
     def __init__(self, knowledgeBase) -> None:
+        ###########
+        # IBackwardChaining initializer
+        # self.knowledgeBase = knowledgeBase  # The knowledge base that alogrithm will use
+        # self.inferred = set()  # To keep track of already inferred symbols
+        # self.chain = []  # To keep the chain of inferences
+        ###########
         super().__init__(knowledgeBase)
 
     def __backward_chaining(self, query):
