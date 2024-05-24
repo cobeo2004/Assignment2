@@ -10,6 +10,7 @@ class BackwardChaining(IBackwardChaining):
         # self.knowledgeBase = knowledgeBase  # The knowledge base that alogrithm will use
         # self.inferred = set()  # To keep track of already inferred symbols
         # self.chain = []  # To keep the chain of inferences
+        # self.visited = set()  # To keep track of visited nodes to detect circular dependencies
         ###########
         super().__init__(knowledgeBase)
 
@@ -18,12 +19,19 @@ class BackwardChaining(IBackwardChaining):
         if query in self.inferred:
             return True
 
+        # If the query is already visited, return False to avoid circular dependencies
+        if query in self.visited:
+            return False
+        # Add the query to the visited set
+        self.visited.add(query)
+
         # Check if the query is a fact in the knowledge base
         for sentence in self.knowledgeBase.sentences:
             if sentence.head == query and len(sentence.conjuncts) == 0:
-                # If the query is a fact (no conjuncts), add it to the chain and inferred set
+                # If the query is a fact (no conjuncts), add it to the chain and inferred set and remove it from visited set
                 self.chain.append(query)
                 self.inferred.add(query)
+                self.visited.remove(query)
                 return True
 
         # Otherwise, try to infer the query using the rules in the knowledge base
@@ -40,8 +48,9 @@ class BackwardChaining(IBackwardChaining):
                 if all_conjuncts_inferred:
                     self.chain.append(query)
                     self.inferred.add(query)
+                    self.visited.remove(query)
                     return True
-
+        self.visited.remove(query)
         # If the query cannot be inferred from the facts or rules, return False
         return False
 

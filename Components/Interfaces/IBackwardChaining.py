@@ -20,6 +20,7 @@ class IBackwardChaining(IMethod):
         self.knowledgeBase = knowledgeBase  # The knowledge base that alogrithm will use
         self.inferred = set()  # To keep track of already inferred symbols
         self.chain = []  # To keep the chain of inferences
+        self.visited = set()  # To keep track of visited nodes to detect circular dependencies
 
     def __backward_chaining(self, query):
         """ The main implemenation of backward chaining algorithm, which is recursive.
